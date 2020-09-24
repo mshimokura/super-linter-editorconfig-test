@@ -1,0 +1,17 @@
+---
+name: Lint Code Base
+on:
+  pull_request:
+jobs:
+  build:
+    name: Lint Code Base
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v2
+      - name: Lint Code Base
+        uses: mshimokura/super-linter@test_editorconfig_lintall
+        env:
+          VALIDATE_ALL_CODEBASE: false
+          DEFAULT_BRANCH: ${{ github.base_ref }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
